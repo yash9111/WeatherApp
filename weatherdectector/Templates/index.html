@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .top-bar {
+            background-color: #3D87E4;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .weather-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        .input-group .form-control {
+            width: 100%; /* Adjust the width of the search box */
+            border-radius: 20px 0 0 20px; /* Add rounded corners to the left side */
+        }
+
+        .input-group .btn {
+            border-radius: 0 20px 20px 0; /* Add rounded corners to the right side */
+        }
+
+        .weather-details {
+            margin-top: 30px;
+        }
+
+        .weather-details h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .weather-details h3, .weather-details h5 {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+    </style>
+    <title>Weather Forecast</title>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Weather Detector</h1>
+    </div>
+    <div class="container">
+        <div class="weather-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="city" placeholder="Search for a city">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="glyphicon glyphicon-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+            {% if country_code %}
+            <div class="weather-details">
+                <h3>City:{{city}}</h3>
+                <h3>Country Code: {{country_code}}</h3>
+                <h5>Coordinates: {{coordinates}}</h5>
+                <h5>Temperature: {{temp}}</h5>
+                <h5>Pressure: {{pressure}}</h5>
+                <h5>Humidity: {{humidity}}</h5>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
