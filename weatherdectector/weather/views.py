@@ -1,11 +1,14 @@
 import urllib.request
 import json
 from django.shortcuts import render
+# import configparser
+
 
 def index(request):
+    api_key="YOUR API KEY"
     if request.method == 'POST':
         city = request.POST['city']
-        res = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8d91deb27dac403bc5363b959eae2f2f').read()
+        res = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid='+api_key).read()
         json_data = json.loads(res)
         
         temp_in_kelvin = float(json_data['main']['temp'])
