@@ -37,7 +37,7 @@ $ cd weather-detector-app
 ## Install the required packages using pip:
 
 ```bash
-$ pip install -r requirements.txt
+$ pip install django
 ```
 
 Obtain an API key from OpenWeatherMap and replace 'YOUR_API_KEY' in views.py with your actual API key.
